@@ -20,5 +20,6 @@ gem 'multi_json'
 
 
 group :production do
+gem 'dalli'
 gem 'heroku'
 end

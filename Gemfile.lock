@@ -34,6 +34,7 @@ GEM
     bcrypt-ruby (3.0.1)
     builder (2.1.2)
     coderay (1.0.5)
+    dalli (1.1.4)
     devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -138,6 +139,7 @@ PLATFORMS
 DEPENDENCIES
   RedCloth
   coderay
+  dalli
   devise
   heroku
   multi_json
