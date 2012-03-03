@@ -35,7 +35,7 @@ class ArticlesControllerTest < ActionController::TestCase
 		assert_redirected_to new_student_session_path
 	end
 	test "should get myarticles signed in" do
-		sign_in :studendt, @student
+		sign_in students(:student2)
 		get :myarticles
 		assert_response :success
 	end

@@ -19,6 +19,7 @@ Diplomatiki::Application.routes.draw do
 			get 'about'
 			get 'all'
 			get 'myarticles'
+			delete 'destroy'
 		end
 
 		member do
