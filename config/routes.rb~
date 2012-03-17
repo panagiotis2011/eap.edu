@@ -19,6 +19,7 @@ Diplomatiki::Application.routes.draw do
 			get 'about'
 			get 'all'
 			get 'myarticles'
+			delete 'destroy'
 		end
 
 		member do
@@ -28,6 +29,7 @@ Diplomatiki::Application.routes.draw do
 		resources :comments, :only => [:create, :destroy]
 		resources :ratings, :only => [:create, :update, :destroy]
 	end
+        default_url_options :host => "eap-edu.heroku.com"
 
 	root :to => 'articles#index'
 end
