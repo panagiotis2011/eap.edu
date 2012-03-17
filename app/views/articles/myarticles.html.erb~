@@ -37,7 +37,7 @@
                 <% end%>
 
                 <% if article.state == 3 %>
-                  <div class="state">Τρέχουσα κατάσταση: Αποδοχή και δημοσίσευση του άρθου (<%= article.accepted.strftime("%B %d, %Y") %>)</div>
+                  <div class="state">Τρέχουσα κατάσταση: Αποδοχή και δημοσίευση του άρθου (<%= article.accepted.strftime("%B %d, %Y") %>)</div>
                 <% end %>
 
                 <% if article.state == 4 %>
