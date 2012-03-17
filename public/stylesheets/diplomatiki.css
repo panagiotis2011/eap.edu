@@ -319,3 +319,29 @@ footer#page_footer { clear: both; background-color: #ffffff; margin: 0px 5% 50px
   text-align: center;
   margin-bottom: 10px;
 }
+/**** and associated tag-cloud styles ****/
+  /* basic tag-box */
+.tag {
+    background-color: #ddd;
+    border: 2px solid #ccc;
+    color: red;
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    padding: 2px 15px;
+    text-decoration: none;
+  }
+  .current_tag {
+    background-color: #ddd;
+    color: black;
+    border: 2px solid red;
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    font-weight: bold;
+  }
+  .tag:hover, .current_tag:hover {
+    background-color: #bbb;
+    color: red;
+    border: 2px solid red;
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+  }

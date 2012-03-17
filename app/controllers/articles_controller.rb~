@@ -117,12 +117,17 @@ class ArticlesController < ApplicationController
 
 
 	def destroy
-		@article = current_student.articles.find(params[:id])
-		# Ο φοιτητής μπορεί να διαγράψει μόνο άρθρα σε κατάσταση "πρόχειρο", "προς υποβολή" ή "μη αποδεκτό"
-		if (@article.state < 3)
+		if current_student.id < 5
+			@article = Article.find(params[:id])
 			@article.destroy
-		else
-			flash[:error] = 'Το άρθρο δεν μπορεί να διαγραφεί.'
+		else		
+			@article = current_student.articles.find(params[:id])
+			# Ο φοιτητής μπορεί να διαγράψει μόνο άρθρα σε κατάσταση "πρόχειρο", "προς υποβολή" ή "μη αποδεκτό"
+			if (@article.state < 3)
+				@article.destroy
+			else
+				flash[:error] = 'Το άρθρο δεν μπορεί να διαγραφεί.'
+			end
 		end
 		respond_to do |format|
 			format.html { redirect_to(articles_url) }

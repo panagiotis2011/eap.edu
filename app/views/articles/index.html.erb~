@@ -9,4 +9,8 @@
 
         </article>
     <% end %>
+
+     <div class='pagination'>
+        <%= will_paginate @articles %>
+    </div>
 </section>

@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-
+  acts_as_taggable_on :keywords
   belongs_to :student
   has_many :comments, :dependent => :destroy
   has_many :ratings, :dependent => :destroy
@@ -25,7 +25,7 @@ class Article < ActiveRecord::Base
 
   def self.search(search)
   if search
-    where('title LIKE ? or teaser LIKE ?', "%#{search}%", "%#{search}%")
+    where('title LIKE ? or body LIKE ?', "%#{search}%", "%#{search}%")
   else
     scoped
   end

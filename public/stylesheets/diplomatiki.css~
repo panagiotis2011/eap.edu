@@ -315,7 +315,7 @@ footer#page_footer { clear: both; background-color: #ffffff; margin: 0px 5% 50px
 .auth_provider {
   float: left;
   text-decoration: none;
-  margin-right: 200px;
+  margin-right: 20px;
   text-align: center;
   margin-bottom: 10px;
 }
