@@ -186,10 +186,12 @@ el:
   time:
     am: πμ
     formats:
-      default: ! '%d %B %Y %H:%M'
+      default: ! '%d %B %H:%M'
       long: ! '%A %d %B %Y %H:%M:%S %Z'
       short: ! '%d %b %H:%M'
     pm: μμ
+
+keyword_list: ! Κατηγορίες-Ετικέτες
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:
     errors:
