@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.11'
-gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'pg'
 gem 'devise'
 gem "recaptcha", :require => "recaptcha/rails"
 
@@ -19,6 +19,6 @@ gem 'omniauth-github'
 gem 'multi_json'
 
 
-group :production do
-gem 'heroku'
+group :test do
+   gem 'sqlite3'
 end
