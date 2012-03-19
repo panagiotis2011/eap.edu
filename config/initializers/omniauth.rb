@@ -12,7 +12,6 @@ require 'openid/store/filesystem'
 
   elsif Rails.env.production?
      provider :twitter, '', ''
-     provider :facebook, '280314415372452', 'c52f299262ca93acb4871685b8e7771e',
-  # {:scope => 'PERMISSION_1, PERMISSION_2, PERMISSION_3...', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+     provider :facebook, '280314415372452', 'c52f299262ca93acb4871685b8e7771e'
   end  
 end
