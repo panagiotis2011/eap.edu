@@ -7,8 +7,10 @@
 
     </h2>
 
-
-    <div class="byline">Γράφτηκε από: <%= link_to @article.student.fullname, "" %></div>
+    <div class="lesson">Θεματική ενότητα: <%= @article.student.lesson_id %></div>
+    <div class="byline">Γράφτηκε από: <%= @article.student.fullname %></div>
+    <div class="biographic">Σύντομο βιογραφικό: <%= @article.student.shortbio %></div>
+    <div class="site">Προσωπική ιστοσελίδα: <%= @article.student.weburl %></div>
 
     <div class="avatar"><%= image_tag gravatar(@article.student.email, 64) %></div>
 

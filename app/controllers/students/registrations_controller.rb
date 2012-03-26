@@ -8,6 +8,7 @@ class Students::RegistrationsController < Devise::RegistrationsController
 		if params[resource_name][:lesson_id]
 			resource.lesson_id = params[resource_name][:lesson_id] if Lesson.find_by_id(params[resource_name][:lesson_id])
 		end
+		
 		if current_student.haslocalpw
 			super
 		else
