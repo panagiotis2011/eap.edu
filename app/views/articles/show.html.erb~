@@ -1,13 +1,13 @@
 <section id="articleheader">
-    <h1><%= @article.title %>
+    <h2><%= @article.title %>
        <ul class="stars floatstars">
             <li class="yellowstars" style="width: <%= @article.avg_rating * 25 %>px !important;"></li>
             <li class="text"><%= @article.avg_rating %> average from <%= pluralize(@article.count_ratings, "vote") %></li>
        </ul>
 
-    </h1>
+    </h2>
 
-    <div class="lesson">Θεματική ενότητα: <%= @article.student.lesson_id %></div>
+    <div class="lesson">Θεματική ενότητα: <%= @article.student.lesson.name %></div>
     <div class="byline">Γράφτηκε από: <%= @article.student.fullname %></div>
     <div class="biographic">Σύντομο βιογραφικό: <%= @article.student.shortbio %></div>
     <div class="site">Προσωπική ιστοσελίδα: <%= @article.student.weburl %></div>
