@@ -56,10 +56,4 @@ Diplomatiki::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-
-  Rails.application.config.middleware.use OmniAuth::Builder do
-
-    provider :twitter, 'OFwqZ9VRfYZT0BCO8f1Xxg', 'XaLr9oWtI5V6b515vmM9UM6S8vQVpROTsk8DQGHcdTA'
-    provider :facebook, '280314415372452', 'c52f299262ca93acb4871685b8e7771e'
-  end
 end

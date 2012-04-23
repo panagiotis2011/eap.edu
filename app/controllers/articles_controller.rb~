@@ -5,22 +5,39 @@ class ArticlesController < ApplicationController
 	rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
 
-	def index
-		@articles = Article.where(:state => '4').paginate(:page => params[:page], :per_page => 10)
-		respond_to do |format|
-			format.html  # index.html.erb
-			format.xml  { render :xml => @articles }
-		end
-	end
+def tag_cloud
+@tags ||= Article.tag_counts_on(:keywords)
+end
 
 
-	def all
-		@articles = Article.where(:state => ['3', '4']).search(params[:search]).order('accepted desc').paginate(:page => params[:page], :per_page => 10)
-		respond_to do |format|
-			format.html { render 'index' }
-			format.xml  { render :xml => @articles }
-		end
-	end
+def index
+options = {} # any search/pagination conditions go here
+@tags = Article.tag_counts_on(:keywords)
+klass = Article
+klass = klass.tagged_with(@keyword) if (@keyword = params[:keyword]).present?
+@articles = klass.where(:state => '4').paginate(:page => params[:page])
+#@articles = Article.where(:state => '4').paginate(:page => params[:page], :per_page => 10)
+respond_to do |format|
+format.html # index.html.erb
+format.xml { render :xml => @articles }
+end
+end
+
+
+def all
+options = {} # any search/pagination conditions go here
+@tags = Article.tag_counts_on(:keywords)
+klass = Article
+klass = klass.tagged_with(@keyword) if (@keyword = params[:keyword]).present?
+@articles = klass.where(:state => ['3', '4']).search(params[:search]).order('accepted desc').paginate(:page => params[:page], :per_page => 10)
+#@articles = Article.where(:state => ['3', '4']).search(params[:search]).order('accepted desc').paginate(:page => params[:page], :per_page => 10)
+respond_to do |format|
+format.html { render 'index' }
+format.xml { render :xml => @articles }
+end
+end
+
+
 
 
 	def myarticles

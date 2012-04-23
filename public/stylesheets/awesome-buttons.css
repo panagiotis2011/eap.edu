@@ -1,26 +1,13 @@
-/*
-    awesome buttons are based on a blog post by ZERB
-    Read there blog post for more information:
-    "Super awesome Buttons with CSS3 and RGBA":http://www.zurb.com/article/266/super-awesome-buttons-with-css3-and-rgba
+.awesome.custom { padding: 5px 20px 6px !important; font-size: 12px !important; margin-right: 10px; }
+.awesome.custom:active { padding: 6px 20px 5px !important; }
 
-    this buttons are even more awesome, as the need only one color for all three states,
-    and have an super awesome onclick state
-
-    Licensed under the MIT license
-    http://swik.net/License:MIT/License+Text
-*/
-
-
-/* own buttons */
-.awesome.custom	{ padding: 5px 20px 6px !important; font-size: 12px !important; margin-right: 10px; }
-.awesome.custom:active   { padding: 6px 20px 5px !important; }
-
-.awesome.search	{ padding: 4px 20px 5px !important; font-size: 12px !important; }
-.awesome.search:active   { padding: 5px 20px 4px !important; }
+.awesome.search { padding: 4px 20px 5px !important; font-size: 12px !important; }
+.awesome.search:active { padding: 5px 20px 4px !important; }
 
 .awesome.red { background-color: #c81419 !important; }
 .awesome.black { background-color: #222222 !important; }
 .awesome.gray { background-color: #74809a !important; }
+.awesome.blue { background-color: #28809a !important; }
 
 /* set an awesome color for the buttons, feel free to add new colors like an .awesome.green or .awesome.secondary */
 .awesome {
@@ -64,7 +51,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#30ffffff,endColorstr=#10000000) progid:DXImageTransform.Microsoft.Shadow(color=#000000,direction=135,strength=2);
 
   /* cross browser inline block hack
-     see http://blog.mozilla.com/webdev/2009/02/20/cross-browser-inline-block/ */
+see http://blog.mozilla.com/webdev/2009/02/20/cross-browser-inline-block/ */
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle !important;
@@ -84,7 +71,7 @@
 }
 
 /* OPERA only
-   if there is no border set, Opera shows a transparent background-color if border-radius is set. */
+if there is no border set, Opera shows a transparent background-color if border-radius is set. */
 @media all and (-webkit-min-device-pixel-ratio:10000),not all and (-webkit-min-device-pixel-ratio:0) {
   input.awesome {
     border: 1px solid RGBa(0,0,0,0) !important;
@@ -124,3 +111,6 @@
     -webkit-box-shadow: none;
   }
 }
+
+
+
