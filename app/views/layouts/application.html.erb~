@@ -40,7 +40,7 @@
         <div id="page_title">
             <h1>Χώρος <span>Συζήτησης Ενημέρωσης</span></h1>
             <h2> <span>φοιτητών</span> EAΠ και <span>διδασκόντων</span> 
-            <%= l(Time.now, :format => :long) %></p></h2>
+            <%= l(Time.now, :format => :default) %></p></h2>
         </div>
     </header>
 
@@ -100,6 +100,38 @@
                 <div><%= link_to "Εικονικές Τάξεις", "http://centra.eap.gr" %></div>
                 <div><%= link_to "Online Ασκήσεις", "http://moodle.eap.gr" %></div>
             </section>
+<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'search',
+  search: 'social media',
+  interval: 30000,
+  title: '',
+  subject: 'Social media',
+  width: 180,
+  height: 300,
+  theme: {
+    shell: {
+      background: '#dddddd',
+      color: '#0a090a'
+    },
+    tweets: {
+      background: '#fafa05',
+      color: '#444444',
+      links: '#1e7aeb'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: true,
+    live: true,
+    behavior: 'default'
+  }
+}).render().start();
+</script>
+
+
         </section>
     </section>
 
