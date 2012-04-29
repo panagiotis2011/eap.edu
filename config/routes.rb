@@ -20,6 +20,7 @@ end
 
 resources :articles do
 collection do
+get 'autocomplete_tag_name'
 get 'about'
 get 'all'
 get 'myarticles'
