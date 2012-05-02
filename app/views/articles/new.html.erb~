@@ -1,5 +1,7 @@
-
+# encoding: utf-8
 <section id="myarticles">
+    <h2>Νέο άρθρο</h2>
+    
 <%= form_for(@article) do |f| %>
   <% if @article.errors.any? %>
     <div id="error_explanation">
@@ -35,7 +37,7 @@
 
   <div class="field">
    <label for="tag_list">Κατηγορία (Μπορείτε να προσθέσετε διαφορετικές κατηγορίες διαχωρίζοντάς τες με κόμμα)</label><br />
-   <%= f.autocomplete_field :tag_list, autocomplete_tag_name_articles_path, :"data-delimiter" => ', ' %>
+   <%= f.autocomplete_field :tag_list, autocomplete_articles_path_tag_name, :"data-delimiter" => ', ' %>
   </div>
 
    <div class="actions">
@@ -48,4 +50,7 @@
 
 
 
+
+    <%= sanitize textilize ('Μια *απλή* παράγραφος με _πλάγια γραμματοσειρά_ και ένα "link":http://redcloth.org') %>
+    <%= sanitize CodeRay.highlight("Εδώ οι χαρακτήρες του κειμένου είναι χρώματος λευκού σε μαύρο φόντο!", :ruby, :css => :class) %>
 </section>

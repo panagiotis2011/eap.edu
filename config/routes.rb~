@@ -20,7 +20,7 @@ end
 
 resources :articles do
 collection do
-get 'autocomplete_keyword_name'
+get 'autocomplete_resource_tag'
 get 'about'
 get 'all'
 get 'myarticles'

@@ -1,6 +1,7 @@
 # encoding: utf-8
 class ArticlesController < ApplicationController
-autocomplete :keyword, :name, :class_name => 'ActAsTaggableOn::Tag'
+respond_to :json
+autocomplete :tag, :name, :class_name => 'ActAsTaggableOn::Tag'
 # μόνο οι μέθοδοι index, all, about και show είναι προσβάσιμες από μη πιστοποιημένους χρήστες
 before_filter :authenticate_student!, :except => [:index, :all, :show, :about]
 rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
@@ -9,7 +10,6 @@ rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 def tag_cloud
 @tags ||= Article.tag_counts_on(:tags)
 end
-
 
 def index
 options = {} # εδώ οποιαδήποτε συνθήκη search/pagination

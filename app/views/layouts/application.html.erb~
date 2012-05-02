@@ -40,7 +40,7 @@
         </nav>
         <div id="page_title">
             <h1><span>Χώρος </span>Συζήτησης Ενημέρωσης</h1>
-            <h2><%= image_tag "facebook_32.png", :size => "32x32" %>οιτητών <span> EAΠ και </span><%= image_tag "twitter_32.png", :size => "32x32" %>ων διδασκόντων
+            <h2><%= image_tag "facebook_32.png", :size => "32x32" %>οιτητών <span> EAΠ και </span>διδασκόν<%= image_tag "twitter_32.png", :size => "32x32" %>ων
 <span><%= l(Time.now, :format => :default) %></span> </p></h2>
         </div>
     </header>

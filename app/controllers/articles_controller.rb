@@ -1,5 +1,6 @@
 # encoding: utf-8
 class ArticlesController < ApplicationController
+respond_to :json
 autocomplete :tag, :name, :class_name => 'ActAsTaggableOn::Tag'
 # μόνο οι μέθοδοι index, all, about και show είναι προσβάσιμες από μη πιστοποιημένους χρήστες
 before_filter :authenticate_student!, :except => [:index, :all, :show, :about]
@@ -9,7 +10,6 @@ rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 def tag_cloud
 @tags ||= Article.tag_counts_on(:tags)
 end
-
 
 def index
 options = {} # εδώ οποιαδήποτε συνθήκη search/pagination
@@ -38,8 +38,8 @@ format.xml { render :xml => @articles }
 end
 end
 
-def auto_complete_for_link_keyword_list 
-    @tags = Link.tag_counts_on(:tags).where('tags.name LIKE ?', params[:link][:keyword_list]) 
+def auto_complete_for_link_tag_list 
+    @tags = Link.tag_counts_on(:tags).where('tags.name LIKE ?', params[:link][:tag_list]) 
     render :inline => "<%= auto_complete_result(@tags, 'name') %>", :layout => false 
     logger.info "#{@tags.size} tags found."
   end 
