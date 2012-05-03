@@ -38,8 +38,8 @@ format.xml { render :xml => @articles }
 end
 end
 
-def auto_complete_for_link_keyword_list 
-    @tags = Link.tag_counts_on(:tags).where('tags.name LIKE ?', params[:link][:keyword_list]) 
+def auto_complete_for_link_tag_list 
+    @tags = Link.tag_counts_on(:tags).where('tags.name LIKE ?', params[:link][:tag_list]) 
     render :inline => "<%= auto_complete_result(@tags, 'name') %>", :layout => false 
     logger.info "#{@tags.size} tags found."
   end 

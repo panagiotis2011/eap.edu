@@ -1,7 +1,7 @@
 # encoding: utf-8
 class ArticlesController < ApplicationController
 respond_to :json
-autocomplete :tag, :name, :class_name => 'ActAsTaggableOn::Tag'
+autocomplete :tag, :name
 # μόνο οι μέθοδοι index, all, about και show είναι προσβάσιμες από μη πιστοποιημένους χρήστες
 before_filter :authenticate_student!, :except => [:index, :all, :show, :about]
 rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
