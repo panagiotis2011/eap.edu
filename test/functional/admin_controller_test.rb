@@ -3,88 +3,88 @@ require 'test_helper'
 
 class AdminControllerTest < ActionController::TestCase
 
-  # acceptarticle
-  test "should not accept article anonymous" do
-    put :accept, :id => articles(:four).id, :value => '0'
-    assert !assigns(:article)
-    assert_redirected_to new_student_session_path
+  # acceptquestion
+  test "should not accept question anonymous" do
+    put :accept, :id => questions(:four).id, :value => '0'
+    assert !assigns(:question)
+    assert_redirected_to new_user_session_path
   end
-  test "should not accept article as normal student" do
-    sign_in students(:student5)
-    put :accept, :id => articles(:four).id, :value => '0'
-    assert !assigns(:article)
+  test "should not accept question as normal user" do
+    sign_in users(:user5)
+    put :accept, :id => questions(:four).id, :value => '0'
+    assert !assigns(:question)
     assert_redirected_to root_url
   end
-  test "should not accept draft article" do
-    sign_in students(:student1)
-    put :accept, :id => articles(:three).id, :value => '0'
-    assert_equal 'Μόνο υποβληθέντα άρθρα μπορούν να δημοσιευθούν.', flash[:notice]
-    assert assigns(:article).state == 0, "Article state is not 0 (draft)"
-    assert_redirected_to articles_admin_index_path + '?state=1'
+  test "should not accept draft question" do
+    sign_in users(:user1)
+    put :accept, :id => questions(:three).id, :value => '0'
+    assert_equal 'Μόνο ερωτήσεις που έχουν υποβληθεί μπορούν να δημοσιευθούν.', flash[:notice]
+    assert assigns(:question).state == 0, "Question state is not 0 (draft)"
+    assert_redirected_to questions_admin_index_path + '?state=1'
   end
-  test "should accept article as standard" do
-    sign_in students(:student1)
-    put :accept, :id => articles(:four).id, :value => '0'
-    assert_equal 'Το άρθρο έχει γίνει αποδεκτό.', flash[:notice]
-    assert assigns(:article).state == 3, "Article state is not 3 (accepted)"
-    assert_redirected_to articles_admin_index_path + '?state=1'
+  test "should accept question as standard" do
+    sign_in users(:user1)
+    put :accept, :id => questions(:four).id, :value => '0'
+    assert_equal 'Η ερώτηση έχει γίνει αποδεκτή.', flash[:notice]
+    assert assigns(:question).state == 3, "Question state is not 3 (accepted)"
+    assert_redirected_to questions_admin_index_path + '?state=1'
   end
-  test "should accept article as standard if no param" do
-    sign_in students(:student1)
-    put :accept, :id => articles(:four).id
-    assert_equal 'Το άρθρο έχει γίνει αποδεκτό.', flash[:notice]
-    assert assigns(:article).state == 3, "Article state is not 3 (accepted)"
-    assert_redirected_to articles_admin_index_path + '?state=1'
+  test "should accept question as standard if no param" do
+    sign_in users(:user1)
+    put :accept, :id => questions(:four).id
+    assert_equal 'Η ερώτηση έχει γίνει αποδεκτή.', flash[:notice]
+    assert assigns(:question).state == 3, "Question state is not 3 (accepted)"
+    assert_redirected_to questions_admin_index_path + '?state=1'
   end
-  test "should accept article as featured" do
-    sign_in students(:student1)
-    put :accept, :id => articles(:four).id, :value => '1'
-    assert_equal 'Το άρθρο έχει γίνει αποδεκτό ως προτεινόμενο άρθρο.', flash[:notice]
-    assert assigns(:article).state == 4, "Article state is not 4 (featured)"
-    assert_redirected_to articles_admin_index_path + '?state=1'
+  test "should accept question as featured" do
+    sign_in users(:user1)
+    put :accept, :id => questions(:four).id, :value => '1'
+    assert_equal 'Η ερώτηση έχει γίνει αποδεκτή ως προτεινόμενη ερώτηση.', flash[:notice]
+    assert assigns(:question).state == 4, "Question state is not 4 (featured)"
+    assert_redirected_to questions_admin_index_path + '?state=1'
   end
 
   # edit reject
   test "should not get editreject anonymous" do
-    get :editreject, :id => articles(:four).id
-    assert_redirected_to new_student_session_path
+    get :editreject, :id => questions(:four).id
+    assert_redirected_to new_user_session_path
   end
-  test "should not get editreject as normal student" do
-    sign_in students(:student5)
-    get :editreject, :id => articles(:four).id
+  test "should not get editreject as normal user" do
+    sign_in users(:user5)
+    get :editreject, :id => questions(:four).id
     assert_redirected_to root_url
   end
   test "should get editreject" do
-    sign_in students(:student1)
-    get :editreject, :id => articles(:four).id
+    sign_in users(:user1)
+    get :editreject, :id => questions(:four).id
     assert_response :success
   end
 
-  # reject article
-  test "should not reject article anonymous" do
-    put :reject, :id => articles(:four).id, :article => { :message => 'reject' }
-    assert !assigns(:article)
-    assert_redirected_to new_student_session_path
+  # reject question
+  test "should not reject question anonymous" do
+    put :reject, :id => questions(:four).id, :question => { :message => 'reject' }
+    assert !assigns(:question)
+    assert_redirected_to new_user_session_path
   end
-  test "should not reject article as normal student" do
-    sign_in students(:student5)
-    put :reject, :id => articles(:four).id, :article => { :message => 'reject' }
-    assert !assigns(:article)
+  test "should not reject question as normal user" do
+    sign_in users(:user5)
+    put :reject, :id => questions(:four).id, :question => { :message => 'reject' }
+    assert !assigns(:question)
     assert_redirected_to root_url
   end
-  test "should not reject draft article" do
-    sign_in students(:student1)
-    put :reject, :id => articles(:three).id, :article => { :message => 'reject' }
-    assert assigns(:article).state == 0, "Article state is not 0 (draft)"
-    assert_equal 'Μόνο υποβληθέντα άρθρα μπορούν να απορριφθούν.', flash[:notice]
+  test "should not reject draft question" do
+    sign_in users(:user1)
+    put :reject, :id => questions(:three).id, :question => { :message => 'reject' }
+    assert assigns(:question).state == 0, "Question state is not 0 (draft)"
+    assert_equal 'Μόνο ερωτήσεις που έχουν υποβληθεί μπορούν να απορριφθούν.', flash[:notice]
   end
-  test "should reject article" do
-    sign_in students(:student1)
-    put :reject, :id => articles(:four).id, :article => { :message => 'reject' }
-    assert assigns(:article).state == 2, "Article state is not 2 (rejected)"
-    assert assigns(:article).message == 'reject', "Message has not been set"
-    assert assigns(:article).freezebody != '', "Freezebody has not been set"
-    assert_redirected_to articles_admin_index_path + '?state=1'
-    assert_equal 'Το άρθρο έχει απορριφθεί.', flash[:notice]
+  test "should reject question" do
+    sign_in users(:user1)
+    put :reject, :id => questions(:four).id, :question => { :message => 'reject' }
+    assert assigns(:question).state == 2, "Question state is not 2 (rejected)"
+    assert assigns(:question).message == 'reject', "Message has not been set"
+    assert assigns(:question).freezebody != '', "Freezebody has not been set"
+    assert_redirected_to questions_admin_index_path + '?state=1'
+    assert_equal 'Η ερώτηση έχει απορριφθεί.', flash[:notice]
   end
 end

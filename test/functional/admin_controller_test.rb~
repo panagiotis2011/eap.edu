@@ -67,7 +67,7 @@ class AdminControllerTest < ActionController::TestCase
     assert_redirected_to new_student_session_path
   end
   test "should not reject article as normal student" do
-    sign_in students(:student2)
+    sign_in students(:student5)
     put :reject, :id => articles(:four).id, :article => { :message => 'reject' }
     assert !assigns(:article)
     assert_redirected_to root_url

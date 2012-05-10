@@ -7,18 +7,18 @@
   <%= f.email_field :email %></p>
 
   <%= image_tag gravatar(resource.email, 30) %></p>
-  <p>Ο Χώρος συζήτησης ενημέρωσης χρησιμοποιεί την υπηρεσία Gravatar και σε συνδυασμό με την ηλεκτρονική διεύθυνση εμφανίζεται η εικόνα avatar. Μπορείτε να ρυθμίσεται το avatar σας στο <%= link_to 'Gravatar', http://www.gravatar.com' %>.<br />
+  <p>Ο Χώρος Συζήτησης Ενημέρωσης χρησιμοποιεί την υπηρεσία Gravatar και σε συνδυασμό με την ηλεκτρονική διεύθυνση εμφανίζεται η εικόνα avatar. Μπορείτε να ρυθμίσεται το avatar σας στο <%= link_to 'Gravatar', http://www.gravatar.com' %>.<br />
 
-  <p><%= f.label 'name', 'Όνομα Επίθετο' %><span>(Θα εμφανίζεται στα άρθρα / σχόλια)</span><br />
+  <p><%= f.label 'name', 'Όνομα Επίθετο' %><span>(Θα εμφανίζεται στις ερωτήσεις / σχόλια)</span><br />
   <%= f.text_field :fullname %></p>
 
-  <p><%= f.label 'lesson', 'Θεματική Ενότητα' %><span>(Θα εμφανίζεται στα άρθρα / σχόλια)</span><br />
+  <p><%= f.label 'lesson', 'Θεματική Ενότητα' %><span>(Θα εμφανίζεται στις ερωτήσεις / σχόλια)</span><br />
   <%= f.select :lesson_id, @lessons %></p>
 
-  <p><%= f.label 'about', 'Σχετικά με εμένα' %><span>(Θα εμφανίζεται στα άρθρα)</span><br />
+  <p><%= f.label 'about', 'Σχετικά με εμένα' %><span>(Θα εμφανίζεται στις ερωτήσεις)</span><br />
   <%= f.text_area :shortbio, :size => "100%x5", :class => "fullwidth" %></p>
 
-  <p><%= f.label 'url', 'Η προσωπική σας ιστοσελίδα' %><span>(Θα εμφανίζεται στα άρθρα / σχόλια)</span><br />
+  <p><%= f.label 'url', 'Η προσωπική σας ιστοσελίδα' %><span>(Θα εμφανίζεται στις ερωτήσεις / σχόλια)</span><br />
   <%= f.url_field :weburl %></p>
 
   <p><%= f.label :password %> <span>(leave blank if you don't want to change it)</span><br />

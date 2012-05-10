@@ -8,16 +8,16 @@
 
   <p>diplomatiki uses <%= link_to 'Gravatar', 'http://www.gravatar.com' %> σε συνδυασμό με την ηλεκτρονική διεύθυνση εμφανίζεται η εικόνα avatar. Μπορείτε να ρυθμίσεται το avatar σας στο Gravatar.<br /><%= image_tag gravatar(resource.email) %></p>
 
-  <p><%= f.label 'name', 'Firstname Lastname' %><span>(Θα εμφανίζεται στα άρθρα / σχόλια)</span><br />
+  <p><%= f.label 'name', 'Firstname Lastname' %><span>(Θα εμφανίζεται στις ερωτήσεις / σχόλια)</span><br />
   <%= f.text_field :fullname %></p>
 
-  <p><%= f.label 'Lesson', 'Lesson' %><span>(Θα εμφανίζεται στα άρθρα / σχόλια)</span><br />
+  <p><%= f.label 'Lesson', 'Lesson' %><span>(Θα εμφανίζεται στις ερωτήσεις / σχόλια)</span><br />
   <%= f.select :Lesson_id, @lessons %></p>
 
-  <p><%= f.label 'about', 'About me' %><span>(Θα εμφανίζεται στα άρθρα)</span><br />
+  <p><%= f.label 'about', 'About me' %><span>(Θα εμφανίζεται στις ερωτήσεις)</span><br />
   <%= f.text_area :shortbio, :size => "100%x5", :class => "fullwidth" %></p>
 
-  <p><%= f.label 'url', 'Your Homepage or Blog' %><span>(Θα εμφανίζεται στα άρθρα / σχόλια)</span><br />
+  <p><%= f.label 'url', 'Your Homepage or Blog' %><span>(Θα εμφανίζεται στις ερωτήσεις / σχόλια)</span><br />
   <%= f.url_field :weburl %></p>
 
   <p><%= f.label :password %> <span>(leave blank if you don't want to change it)</span><br />
