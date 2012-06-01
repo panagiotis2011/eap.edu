@@ -78,6 +78,7 @@ end
 def show
 @question = Question.find(params[:id])
 @comments = @question.comments.all
+
 if user_signed_in?
 @rating_currentuser = @question.ratings.find_by_user_id(current_user.id)
 unless @rating_currentuser
@@ -187,8 +188,8 @@ end
 
 def destroy
 # οι διαχειριστές μπορούν να διαγράψουν ερωτήσεις σε κάθε κατάσταση
-if current_user.id < 5
 @question = Question.find(params[:id])
+if current_user.user_kind == 1
 @question.destroy
 else
 @question = current_user.questions.find(params[:id])

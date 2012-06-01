@@ -2,15 +2,16 @@
     <h2><%= @question.title %>
        <ul class="stars floatstars">
             <li class="yellowstars" style="width: <%= @question.avg_rating * 25 %>px !important;"></li>
-            <li class="text"><%= @question.avg_rating %> average from <%= pluralize(@question.count_ratings, "vote") %></li>
+            <li class="text">Ο μέσος όρος είναι <%= @question.avg_rating %> από συνολικά <%= pluralize(@question.count_ratings, "ψήφο") %></li>
        </ul>
 
     </h2>
 
-    <div class="lesson">Θεματική ενότητα: <%= @question.user.lesson_id %></div>
-    <div class="byline">Γράφτηκε από: <%= @question.user.fullname %></div>
-    <div class="biographic">Σύντομο βιογραφικό: <%= @question.user.shortbio %></div>
-    <div class="site">Προσωπική ιστοσελίδα: <%= @question.user.weburl %></div>
+
+    <div class="byline">Γράφτηκε από: <%= @question.user.fullname %>, Θεματική ενότητα: <%= @question.user.lesson.try(:name) %></div>
+    <div class="byline">Προσωπική ιστοσελίδα: <%= link_to @question.user.weburl, url_for(@question.user.weburl) %></div>
+    <div class="byline">Σύντομο βιογραφικό: <%= @question.user.shortbio %></div>
+
 
     <div class="avatar"><%= image_tag gravatar(@question.user.email, 64) %></div>
 
@@ -26,7 +27,7 @@
 </section>
 
 
-<% # comments και ratings είναι διαθέσιμα μόνο για ερωτήσεις που είναι δημοσιευμένες %>
+<% # comments και ratings είναι διαθέσιμα μόνο για άρθρα που είναι δημοσιευμένα %>
 <% if @question.state > 2 %>
 
      <section id="rating">
@@ -34,17 +35,17 @@
             <%= form_for [@question, @rating_currentuser] do |f| %>
                 <div id="ratingbox">
                     <ul id="ratingbuttons">
-                        <li><%= f.radio_button :stars, "5" %><span>Τέλειο</span></li>
-                        <li><%= f.radio_button :stars, "4" %><span>Πολύ καλό</span></li>
-                        <li><%= f.radio_button :stars, "3" %><span>Καλό</span></li>
-                        <li><%= f.radio_button :stars, "2" %><span>Μέτριο</span></li>
-                        <li><%= f.radio_button :stars, "1" %><span>Αδιάφορο</span></li>
+                        <li><%= f.radio_button :stars, "5" %><span>Τέλεια</span></li>
+                        <li><%= f.radio_button :stars, "4" %><span>Πολύ καλή</span></li>
+                        <li><%= f.radio_button :stars, "3" %><span>Καλή</span></li>
+                        <li><%= f.radio_button :stars, "2" %><span>Μέτρια</span></li>
+                        <li><%= f.radio_button :stars, "1" %><span>Αδιάφορη</span></li>
                     </ul>
                     <div class="center"><%= f.submit "Αξιολόγησε αυτή την ερώτηση", :class => "awesome custom red" %></div>
                 </div>
             <% end %>
         <% else %>
-            <div id="ratingbox"><%= link_to "Είσοδος", new_user_session_path %> για να βαθμολογήσεις αυτή την ερώτηση</div>
+            <div id="ratingbox"><%= link_to "Είσοδος", new_user_session_path %> για να βαθμολογήσεις αυτό το άρθρο</div>
         <% end %>
     </section>
     <section id="comments">
@@ -53,10 +54,12 @@
                 <div class="avatar"><%= image_tag gravatar(comment.user.email, 48) %></div>
                 <div class="commentbody">
                     <div class="commenthead">
-                      <%= comment.user.fullname %> - <%=time_ago_in_words(comment.created_at)%> ago
-                      <% # display delete link only for comments written by this particular user %>
+
+                      <%= link_to comment.user.fullname, url_for(comment.user.weburl) %>, <%= comment.user.lesson.try(:name) %>, - <%=time_ago_in_words(comment.created_at)%> πριν
+
+                      <% # εμφάνιση του link διαγραφή μόνο για σχόλια που έχουν γραφεί από τον συγκεκριμένο χρήστη %>
                       <% if user_signed_in? and comment.user_id == current_user.id %>
-                          <span><%= link_to 'delete', question_comment_path(@question, comment), :confirm => 'Are you sure?', :method => :delete, :class => "" %></span>
+                          <span><%= link_to 'Διαγραφή', question_comment_path(@question, comment), :confirm => 'Are you sure?', :method => :delete, :class => "" %></span>
                       <% end %>
                     </div>
                     <div><%= comment.body %></div>
@@ -71,7 +74,7 @@
                     <div class="commentbody">
                         <% if current_user.fullname == nil or current_user.fullname == '' %>
                             <div class="commenthead">
-                                Παρακαλώ ενημερώστε το <%= link_to "Προφίλ", edit_user_registration_path %> πριν σχολιάσετε την ερώτηση.
+                                Παρακαλώ ενημερώστε το <%= link_to "Προφίλ", edit_user_registration_path %> πριν σχολιάσετε το άρθρο.
                             </div>
                         <% else %>
                             <div class="commenthead">
@@ -79,7 +82,7 @@
                             </div>
                             <div>
                                 <%= form_for [@question, current_user.comments.new] do |f| %>
-                                    <%= f.text_area :body, :size => "100%x20", :class => "fullwidth" %>
+                                    <%= f.text_area :body, :size => "100%x10", :class => "fullwidth" %>
                                     <%= f.submit "Πρόσθεσε σχόλιο", :class => "awesome custom red" %>
                                 <% end %>
                             </div>
@@ -93,3 +96,4 @@
         </question>
     </section>
 <% end %>
+

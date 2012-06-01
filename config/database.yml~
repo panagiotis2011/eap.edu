@@ -3,8 +3,7 @@
 development:
   adapter: postgresql
   database: rails_development
-  username: konstanti
-  password: 123
+  username: konstantinos
   pool: 5
   timeout: 5000
 

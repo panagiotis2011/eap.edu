@@ -3,40 +3,40 @@ require 'test_helper'
 
 class AdminControllerTest < ActionController::TestCase
 
-  # acceptquestion
-  test "should not accept question anonymous" do
+  # acceptQuestion
+  test "should not accept Question anonymous" do
     put :accept, :id => questions(:four).id, :value => '0'
-    assert !assigns(:question)
+    assert !assigns(:Question)
     assert_redirected_to new_user_session_path
   end
-  test "should not accept question as normal user" do
-    sign_in users(:user5)
+  test "should not accept Question as normal user" do
+    sign_in users(:user2)
     put :accept, :id => questions(:four).id, :value => '0'
-    assert !assigns(:question)
+    assert !assigns(:Question)
     assert_redirected_to root_url
   end
-  test "should not accept draft question" do
+  test "should not accept draft Question" do
     sign_in users(:user1)
     put :accept, :id => questions(:three).id, :value => '0'
     assert_equal 'Μόνο ερωτήσεις που έχουν υποβληθεί μπορούν να δημοσιευθούν.', flash[:notice]
     assert assigns(:question).state == 0, "Question state is not 0 (draft)"
     assert_redirected_to questions_admin_index_path + '?state=1'
   end
-  test "should accept question as standard" do
+  test "should accept Question as standard" do
     sign_in users(:user1)
     put :accept, :id => questions(:four).id, :value => '0'
     assert_equal 'Η ερώτηση έχει γίνει αποδεκτή.', flash[:notice]
     assert assigns(:question).state == 3, "Question state is not 3 (accepted)"
     assert_redirected_to questions_admin_index_path + '?state=1'
   end
-  test "should accept question as standard if no param" do
+  test "should accept Question as standard if no param" do
     sign_in users(:user1)
     put :accept, :id => questions(:four).id
     assert_equal 'Η ερώτηση έχει γίνει αποδεκτή.', flash[:notice]
     assert assigns(:question).state == 3, "Question state is not 3 (accepted)"
     assert_redirected_to questions_admin_index_path + '?state=1'
   end
-  test "should accept question as featured" do
+  test "should accept Question as featured" do
     sign_in users(:user1)
     put :accept, :id => questions(:four).id, :value => '1'
     assert_equal 'Η ερώτηση έχει γίνει αποδεκτή ως προτεινόμενη ερώτηση.', flash[:notice]
@@ -50,7 +50,7 @@ class AdminControllerTest < ActionController::TestCase
     assert_redirected_to new_user_session_path
   end
   test "should not get editreject as normal user" do
-    sign_in users(:user5)
+    sign_in users(:user2)
     get :editreject, :id => questions(:four).id
     assert_redirected_to root_url
   end
@@ -60,19 +60,19 @@ class AdminControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # reject question
-  test "should not reject question anonymous" do
+  # reject Question
+  test "should not reject Question anonymous" do
     put :reject, :id => questions(:four).id, :question => { :message => 'reject' }
-    assert !assigns(:question)
+    assert !assigns(:Question)
     assert_redirected_to new_user_session_path
   end
-  test "should not reject question as normal user" do
-    sign_in users(:user5)
+  test "should not reject Question as normal user" do
+    sign_in users(:user2)
     put :reject, :id => questions(:four).id, :question => { :message => 'reject' }
-    assert !assigns(:question)
+    assert !assigns(:Question)
     assert_redirected_to root_url
   end
-  test "should not reject draft question" do
+  test "should not reject draft Question" do
     sign_in users(:user1)
     put :reject, :id => questions(:three).id, :question => { :message => 'reject' }
     assert assigns(:question).state == 0, "Question state is not 0 (draft)"
@@ -88,3 +88,4 @@ class AdminControllerTest < ActionController::TestCase
     assert_equal 'Η ερώτηση έχει απορριφθεί.', flash[:notice]
   end
 end
+

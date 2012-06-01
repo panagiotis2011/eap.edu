@@ -81,6 +81,7 @@ class AdminController < ApplicationController
 	end
 
 
+
 	def questions
 		if params[:state]
 			@state = params[:state]

@@ -46,10 +46,10 @@ end
 
 
 
-@question1 = Question.create! :title => 'Question No. 1', :state => 1, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Question 1", :user_id => 6
-@question2 = Question.create! :title => 'Question No. 2', :state => 1, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Question 2", :user_id => 6
-@question3 = Question.create! :title => 'Question No. 3', :state => 2, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Question 3", :user_id => 6
-@question4 = Question.create! :title => 'Question No. 4', :state => 3, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "h1. Question 4", :user_id => 6
-@question5 = Question.create! :title => 'Question No. 5', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "h1. Question 5", :user_id => 6
+@question1 = Question.create! :title => 'Question No. 1', :state => 1, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Question 1", :user_id => 4
+@question2 = Question.create! :title => 'Question No. 2', :state => 1, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Question 2", :user_id => 4
+@question3 = Question.create! :title => 'Question No. 3', :state => 2, :message => '', :submitted => Time.now - 2.day, :accepted => '', :body => "h1. Question 3", :user_id => 4
+@question4 = Question.create! :title => 'Question No. 4', :state => 3, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "h1. Question 4", :user_id => 4
+@question5 = Question.create! :title => 'Question No. 5', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "h1. Question 5", :user_id => 4
 
 

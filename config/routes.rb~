@@ -34,4 +34,5 @@ match '/auth/twitter', :as => :auth_twitter
 		resources :comments, :only => [:create, :destroy]
 		resources :ratings, :only => [:create, :update, :destroy]
 	end
+	root :to => 'questions#index'
 end

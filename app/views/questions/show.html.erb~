@@ -7,12 +7,12 @@
 
     </h2>
 
-    <div class="lesson">Θεματική ενότητα: <%= @question.student.lesson_id %></div>
-    <div class="byline">Γράφτηκε από: <%= @question.student.fullname %></div>
-    <div class="biographic">Σύντομο βιογραφικό: <%= @question.student.shortbio %></div>
-    <div class="site">Προσωπική ιστοσελίδα: <%= @question.student.weburl %></div>
+    <div class="lesson">Θεματική ενότητα: <%= @question.user.lesson.try(:name) %></div>
+    <div class="byline">Γράφτηκε από: <%= @question.user.fullname %></div>
+    <div class="biographic">Σύντομο βιογραφικό: <%= @question.user.shortbio %></div>
+    <div class="site">Προσωπική ιστοσελίδα: <%= @question.user.weburl %></div>
 
-    <div class="avatar"><%= image_tag gravatar(@question.student.email, 64) %></div>
+    <div class="avatar"><%= image_tag gravatar(@question.user.email, 64) %></div>
 
 </section>
 
@@ -30,8 +30,8 @@
 <% if @question.state > 2 %>
 
      <section id="rating">
-        <% if student_signed_in? %>
-            <%= form_for [@question, @rating_currentstudent] do |f| %>
+        <% if user_signed_in? %>
+            <%= form_for [@question, @rating_currentuser] do |f| %>
                 <div id="ratingbox">
                     <ul id="ratingbuttons">
                         <li><%= f.radio_button :stars, "5" %><span>Τέλειο</span></li>
@@ -44,18 +44,18 @@
                 </div>
             <% end %>
         <% else %>
-            <div id="ratingbox"><%= link_to "Είσοδος", new_student_session_path %> για να βαθμολογήσεις αυτή την ερώτηση</div>
+            <div id="ratingbox"><%= link_to "Είσοδος", new_user_session_path %> για να βαθμολογήσεις αυτή την ερώτηση</div>
         <% end %>
     </section>
     <section id="comments">
         <% @comments.each do |comment| %>
             <question class="comment">
-                <div class="avatar"><%= image_tag gravatar(comment.student.email, 48) %></div>
+                <div class="avatar"><%= image_tag gravatar(comment.user.email, 48) %></div>
                 <div class="commentbody">
                     <div class="commenthead">
-                      <%= comment.student.fullname %> - <%=time_ago_in_words(comment.created_at)%> ago
-                      <% # display delete link only for comments written by this particular student %>
-                      <% if student_signed_in? and comment.student_id == current_student.id %>
+                      <%= comment.user.fullname %> - <%=time_ago_in_words(comment.created_at)%> ago
+                      <% # display delete link only for comments written by this particular user %>
+                      <% if user_signed_in? and comment.user_id == current_user.id %>
                           <span><%= link_to 'delete', question_comment_path(@question, comment), :confirm => 'Are you sure?', :method => :delete, :class => "" %></span>
                       <% end %>
                     </div>
@@ -66,19 +66,19 @@
 
         <% # add a new comment %>
         <question class="comment newcomment">
-                <% if student_signed_in? %>
-                    <div class="avatar"><%= image_tag gravatar(current_student.email, 48) %></div>
+                <% if user_signed_in? %>
+                    <div class="avatar"><%= image_tag gravatar(current_user.email, 48) %></div>
                     <div class="commentbody">
-                        <% if current_student.fullname == nil or current_student.fullname == '' %>
+                        <% if current_user.fullname == nil or current_user.fullname == '' %>
                             <div class="commenthead">
-                                Παρακαλώ ενημερώστε το <%= link_to "Προφίλ", edit_student_registration_path %> πριν σχολιάσετε την ερώτηση.
+                                Παρακαλώ ενημερώστε το <%= link_to "Προφίλ", edit_user_registration_path %> πριν σχολιάσετε την ερώτηση.
                             </div>
                         <% else %>
                             <div class="commenthead">
-                                <%= current_student.fullname %>
+                                <%= current_user.fullname %>
                             </div>
                             <div>
-                                <%= form_for [@question, current_student.comments.new] do |f| %>
+                                <%= form_for [@question, current_user.comments.new] do |f| %>
                                     <%= f.text_area :body, :size => "100%x20", :class => "fullwidth" %>
                                     <%= f.submit "Πρόσθεσε σχόλιο", :class => "awesome custom red" %>
                                 <% end %>
@@ -87,7 +87,7 @@
                     </div>
                 <% else %>
                     <div class="signin">
-                       Παρακαλώ κάντε <%= link_to "Σύνδεση", new_student_session_path %> πριν σχολιάσετε κάποια ερώτηση.
+                       Παρακαλώ κάντε <%= link_to "Σύνδεση", new_user_session_path %> πριν σχολιάσετε κάποια ερώτηση.
                     </div>
                 <% end %>
         </question>
