@@ -3,7 +3,7 @@ class Exercise < ActiveRecord::Base
 	has_attached_file :askisi,
 							:storage => :s3,
 							:url => ":s3_domain_url",
-							:s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+							:s3_credentials => "#{Rails.root.to_s}/config/s3.yml",
 							:path => "/:style/:id/:filename"
 	has_many :users, :through => :writings
 	has_many :writings
