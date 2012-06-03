@@ -6,7 +6,7 @@ class Exercise < ActiveRecord::Base
 							:s3_credentials => "#{Rails.root.to_s}/config/s3.yml",
 							:path => "/:style/:id/:filename"
 	has_many :users, :through => :writings
-	has_many :writings
+	has_many :writings, :dependent => :destroy
 
 	attr_accessible :etitle, :ebody, :average, :askisi
 
