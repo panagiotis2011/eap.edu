@@ -47,8 +47,7 @@ end
 @question5 = Question.create! :title => 'Είσοδος μέσω Facebook', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "Πως μπορεί ο χρήστης να συνδεθεί στην σελίδα
 κάνοντας χρήση του λογαριασμού του στο *Facebook*;
 Ακολουθεί _screencast_ στην παρακάτω \"σελίδα\":http://www.youtube.com/watch?v=PQNf427I1mE", :user_id => 1
-@question6 = Question.create! :title => 'Αποσύνδεση της υπηρεσίας Facebook', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "Πως μπορεί ο χρήστης να αποσυνδέσει από την σελίδα
-τον λογαριασμό του *Facebook*;
+@question6 = Question.create! :title => 'Αποσύνδεση της υπηρεσίας Facebook', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "Πως μπορεί ο χρήστης να αποσυνδέσει από την σελίδα τον λογαριασμό του *Facebook*;
 Ακολουθεί _screencast_ στην παρακάτω \"σελίδα\":http://www.youtube.com/watch?v=94KjzXIbmSk&feature=youtu.be", :user_id => 1
 @question7 = Question.create! :title => 'Δημιουργία ερώτησης', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "Πως μπορεί ο φοιτητής να δημιουργήσει στην εφαρμογή
 κάποια ερώτηση και πως ο καθηγητής την χαρακτηρίζει;
@@ -56,7 +55,8 @@ end
 @question8 = Question.create! :title => 'Προγραμματισμός της ύλης', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "Πως γίνεται ο προγραμματισμός της ύλης των ασκήσεων από τον *καθηγητή*;
 Ακολουθεί _screencast_ στην παρακάτω \"σελίδα\":http://www.youtube.com/watch?v=FJfwFG1H1_c&feature=youtu.be", :user_id => 1
 @question9 = Question.create! :title => 'Ανάρτηση άσκησης', :state => 4, :message => '', :submitted => Time.now - 2.day, :accepted => Time.now, :body => "Πως μπορεί ο *καθηγητής* να ανεβάσει στην σελίδα
-ασκήσεις κάνοντας χρήση της υπηρεσίας amazon s3; Ακολουθεί _screencast_ στην παρακάτω \"σελίδα\":http://www.youtube.com/watch?v=OdtaatHvlMQ&feature=youtu.be", :user_id => 1
+ασκήσεις κάνοντας χρήση της υπηρεσίας amazon s3; 
+Ακολουθεί _screencast_ στην παρακάτω \"σελίδα\":http://www.youtube.com/watch?v=OdtaatHvlMQ&feature=youtu.be", :user_id => 1
 
 @exercise1 = Exercise.create! :etitle => 'PLS50-2012-E01', :ebody => 'exercise 1'
 @exercise2 = Exercise.create! :etitle => 'PLS50-2012-E02', :ebody => 'exercise 2'
