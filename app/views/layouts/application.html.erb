@@ -61,16 +61,11 @@
     </header>
     <section id="maincontainer">
         <section id="content">
-            <section id="flash">
-                <% flash.each do |key, value| %>
-                    <div class="flash <%= key %>"><%= value %></div>
-                <% end %>
-            </section>
-    <section id="flash">
-        <% flash.each do |key, value| %>
+        <section id="flash">
+          <% flash.each do |key, value| %>
             <div class="flash <%= key %>"><%= value %></div>
-        <% end %>
-    </section>
+          <% end %>
+        </section>
 <%= yield %>
    </section>
         <section id="sidebar">

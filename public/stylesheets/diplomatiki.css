@@ -60,8 +60,8 @@ header#page_header { margin: 0px 2% 10px 2%; padding: 5px 15px; }
 #flash { }
 .flash { padding: 10px; margin-bottom: 30px; }
 .error, .alert { background-color: #cc0000; }
-.notice { background-color: #00cc00; }
-.myinfo { background-color: #00cc00; }
+.notice { background-color: #dddddd; }
+.myinfo { background-color: #dddddd; }
 
 /* apply some styling to devise forms */
 #user_edit label, #user_new label, #user_edit i, #user_new i { font-size: 12px; }
