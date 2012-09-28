@@ -30,11 +30,11 @@
      <%= link_to 'Νέα άσκηση', new_exercise_path, :class => "awesome custom red" %>
 <% else %>
 
-	<table>
- 	 <tr>
+			<table>
+  <tr>
    <section id = "exercises">
-  		  <% @exercises.each do |exercise| %>
-      		<exercise class="exercise">
+   <% @exercises.each do |exercise| %>
+       <exercise class="exercise">
             <div class = "etitle"><%= link_to exercise.etitle, exercise %></div>
             <div class = "byline"><%= l(exercise.created_at, :format => '%d %B, %Y') %> </div>
             </exercise>
@@ -46,5 +46,4 @@
 
 <% end %>
   </tr>
-  	</table>
-
+   </table>
