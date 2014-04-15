@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 			if current_user.id < 2
 				@user.destroy
 			else
-				flash[:error] = 'δεν μπορεί να διαγραφεί.'
+				flash[:error] = 'Δεν μπορεί να διαγραφεί.'
 			end
 		end
 		respond_to do |format|
