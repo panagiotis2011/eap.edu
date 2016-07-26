@@ -1,0 +1,48 @@
+{
+  "name": "eap.edu",
+  "scripts": {
+  },
+  "env": {
+    "GMAIL_PASSWORD": {
+      "required": true
+    },
+    "GMAIL_USERNAME": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "PATH": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "S3_BUCKET": {
+      "required": true
+    },
+    "S3_KEY": {
+      "required": true
+    },
+    "S3_SECRET": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    },
+    "worker": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+
+  ]
+}
